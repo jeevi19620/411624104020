@@ -19,7 +19,6 @@
             color: black;
         }
 
-        /* Desktop Navbar */
         @media (min-width: 768px) {
             nav {
                 flex-direction: row;
@@ -31,28 +30,13 @@
         }
         img {
             width: 250px;
-
-            /* 
-               EVEN roll number -> 50px
-               ODD roll number -> 20px
-            */
-
             border-radius: 50px;
         }
         video {
-            width: 50vw;
-            padding: 10px;
-
-            /*
-               0 to 3 -> blue
-               4 to 6 -> green
-               7 to 9 -> purple
-            */
-
-            background-color: blue;
+            width: 20vw;
+            padding: 15px;
+            background-color:blue;
         }
-
-        /* Table */
         table {
             border-collapse: collapse;
             width: 60%;
@@ -71,8 +55,24 @@
         th {
             background-color: lightblue;
         }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 30px;
+        }
 
-        /* Button */
+        .grid-item {
+            background-color: lightcoral;
+            padding: 20px;
+            text-align: center
+        }
+            
+        @media (max-width: 767px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
         button {
             border: none;
             padding: 12px 20px;
@@ -87,50 +87,23 @@
             opacity: 0.7;
         }
 
-        /* Grid - Desktop First */
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-top: 30px;
-        }
-
-        .grid-item {
-            background-color: lightcoral;
-            padding: 20px;
-            text-align: center;
-        }
-
-        /* Mobile Grid */
-        @media (max-width: 767px) {
-            .grid-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
     </style>
 </head>
 
 <body>
-
-    <!-- Navbar -->
     <nav>
         <a href="#">Home</a>
         <a href="#">About</a>
         <a href="#">Contact</a>
     </nav>
-
-    <!-- Heading -->
     <h1>Responsive Web Page</h1>
-
-    <!-- Image -->
-    <img src="https://via.placeholder.com/250" alt="Sample Image">
+    <img src="jeevi.jpg" alt="Sample Image">
 
     <br><br>
 
     <!-- Video -->
     <video controls>
-        <source src="sample.mp4" type="video/mp4">
+        <source src="video.mp4" type="video/mp4">
     </video>
 
     <!-- Table -->
@@ -142,15 +115,15 @@
         </tr>
 
         <tr>
-            <td>some text</td>
-            <td>some text</td>
-            <td>some text</td>
+            <td>jeevi</td>
+            <td>mathu</td>
+            <td>tharika</td>
         </tr>
 
         <tr>
-            <td>some text</td>
-            <td>some text</td>
-            <td>some text</td>
+            <td>paru</td>
+            <td>monika</td>
+            <td>tk</td>
         </tr>
     </table>
 
