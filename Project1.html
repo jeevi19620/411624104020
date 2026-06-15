@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Web Page</title>
+
+    <style>
+        nav {
+            display: flex;
+            flex-direction: column;
+            background-color: lightgray;
+            padding: 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            padding: 10px;
+            color: black;
+        }
+
+        /* Desktop Navbar */
+        @media (min-width: 768px) {
+            nav {
+                flex-direction: row;
+                gap: 20px;
+            }
+        }
+        h1 {
+            text-align: center;
+        }
+        img {
+            width: 250px;
+
+            /* 
+               EVEN roll number -> 50px
+               ODD roll number -> 20px
+            */
+
+            border-radius: 50px;
+        }
+        video {
+            width: 50vw;
+            padding: 10px;
+
+            /*
+               0 to 3 -> blue
+               4 to 6 -> green
+               7 to 9 -> purple
+            */
+
+            background-color: blue;
+        }
+
+        /* Table */
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: lightblue;
+        }
+
+        /* Button */
+        button {
+            border: none;
+            padding: 12px 20px;
+            margin-top: 20px;
+            background-color: blue;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            opacity: 0.7;
+        }
+
+        /* Grid - Desktop First */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 30px;
+        }
+
+        .grid-item {
+            background-color: lightcoral;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Mobile Grid */
+        @media (max-width: 767px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <!-- Heading -->
+    <h1>Responsive Web Page</h1>
+
+    <!-- Image -->
+    <img src="https://via.placeholder.com/250" alt="Sample Image">
+
+    <br><br>
+
+    <!-- Video -->
+    <video controls>
+        <source src="sample.mp4" type="video/mp4">
+    </video>
+
+    <!-- Table -->
+    <table>
+        <tr>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+        </tr>
+
+        <tr>
+            <td>some text</td>
+            <td>some text</td>
+            <td>some text</td>
+        </tr>
+
+        <tr>
+            <td>some text</td>
+            <td>some text</td>
+            <td>some text</td>
+        </tr>
+    </table>
+
+    <!-- Button -->
+    <button>Click Me</button>
+
+    <!-- Grid -->
+    <div class="grid-container">
+
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+
+    </div>
+
+</body>
+</html>
