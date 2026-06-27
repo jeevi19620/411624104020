@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fetch Users</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+
+        button{
+            background-color: blue;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        button:hover{
+            background-color: darkblue;
+        }
+
+        #status{
+            margin: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .user{
+            background-color: white;
+            width: 400px;
+            margin: 10px auto;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 5px gray;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>User Details</h1>
+
+    <button onclick="getUsers()">Load Users</button>
+
+    <div id="status"></div>
+
+    <div id="result"></div>
+
+    <script>
+        function getUsers(){
+
+            document.getElementById("status").innerHTML = "Loading...";
+
+            setTimeout(() => {
+
+                fetch("https://jsonplaceholder.typicode.com/users")
+                .then(response => response.json())
+                .then(data => {
+
+                    let output = "";
+
+                    data.forEach(user => {
+                        output += `
+                            <div class="user">
+                                <p><b>Name:</b> ${user.name}</p>
+                                <p><b>Email:</b> ${user.email}</p>
+                                <p><b>Phone:</b> ${user.phone}</p>
+                            </div>
+                        `;
+                    });
+                    document.getElementById("result").innerHTML = output;
+                    document.getElementById("status").innerHTML = "Loaded successfully";
+
+                })
+                .catch(error => {
+                    document.getElementById("status").innerHTML = "Error loading data";
+                    console.log(error);
+                });
+
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>

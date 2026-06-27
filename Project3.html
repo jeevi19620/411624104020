@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website</title>
+
+    <style>
+        #msginput{
+            padding: 5px;
+            background-color: lightgray;
+            border-radius: 10px;
+            border: 2px solid black;
+            color: blue;
+        }
+
+        #chcount{
+            color: red;
+        }
+
+        #msgbtn{
+            padding: 5px;
+            border-radius: 10px;
+            background-color: aquamarine;
+            cursor: pointer;
+        }
+
+        #clrmsgbtn{
+            padding: 5px;
+            border-radius: 10px;
+            background-color: lightblue;
+            margin-left: 10px;
+        }
+
+        #status{
+            color: red;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <h1>Messaging Website</h1>
+
+    <input type="text" id="msginput">
+
+    <p id="chcount">Character Count : 0</p>
+
+    <button id="msgbtn">Add Message</button>
+
+    <button id="clrmsgbtn">Clear All Message</button>
+
+    <div id="msgarea"></div>
+
+    <p id="status"></p>
+
+    <script>
+
+        const input = document.getElementById("msginput");
+        const charcount = document.getElementById("chcount");
+        const msgbutton = document.getElementById("msgbtn");
+        const clearbutton = document.getElementById("clrmsgbtn");
+        const msgarea = document.getElementById("msgarea");
+        const status = document.getElementById("status");
+
+        let message = [];
+
+        
+        input.addEventListener("input", function () {
+
+            charcount.textContent = "Character Count : " + input.value.length;
+
+        });
+
+        msgbutton.addEventListener("click", function () {
+
+            let promise = new Promise(function (resolve, reject) {
+
+                if (input.value.length >= 3) {
+
+                    resolve(input.value);
+
+                } else {
+
+                    reject("Message must contain at least 3 characters");
+
+                }
+
+            });
+
+            promise.then(function (messages) {
+
+                status.textContent = "Message Added Successfully";
+
+                message.push(messages);
+
+                msgarea.innerHTML = "";
+
+                message.forEach(function (msg) {
+
+                    let p = document.createElement("p");
+
+                    p.className = "message";
+
+                    p.textContent = msg;
+
+                    msgarea.appendChild(p);
+
+                    setTimeout(function () {
+
+                        p.remove();
+
+                        let index = message.indexOf(msg);
+
+                        if (index !== -1) {
+
+                            message.splice(index, 1);
+
+                        }
+
+                        status.textContent = "Message Expired";
+
+                    }, 10000);
+
+                });
+
+                input.value = "";
+
+                charcount.textContent = "Character Count : 0";
+
+            })
+
+            .catch(function (error) {
+
+                status.textContent = error;
+
+            });
+
+        });
+
+        clearbutton.addEventListener("click", function () {
+
+            message = [];
+
+            msgarea.innerHTML = "";
+
+            status.textContent = "All Messages Cleared";
+
+            input.value = "";
+
+            charcount.textContent = "Character Count : 0";
+
+        });
+
+    </script>
+
+</body>
+</html>
